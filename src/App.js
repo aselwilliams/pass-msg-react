@@ -1,4 +1,5 @@
 import Input from './components/Input';
+import PassMsg from './components/PassMsg'
 import './App.css';
 import { Component } from "react";
 
@@ -26,13 +27,13 @@ class App extends Component {
         this.setState({ alert: !alert });
       }, 3000);
     } else {
-      let newList = [...messages, inputValue];
-      this.setState({ output: newList });
+      // let newList = [...messages, inputValue];
+      this.setState({ messages: [...messages,inputValue] });
       this.setState({ inputValue: "" });
     }
   };
   render() {
-    const { inputValue, output, alert } = this.state;
+    const { inputValue, output, alert,messages } = this.state;
     return (
       <div className="container">
         <div className="wrapper">
@@ -52,8 +53,10 @@ class App extends Component {
               Please Enter A Value To Pass
             </p>
             <h4>Last Message Delivered</h4>
-
-            <p id="output-text">{output}</p>
+            <div>
+              <PassMsg messages={messages} deleteMsg={(index)=>this.deleteMsg(index)}/>
+            </div>
+            {/* <p id="output-text">{messages}</p> */}
           </div>
         </div>
       </div>
