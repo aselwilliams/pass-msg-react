@@ -52,11 +52,10 @@ class App extends Component {
             <p className={alert ? "show red-msg" : "no-show"}>
               Please Enter A Value To Pass
             </p>
-            <h4>Last Message Delivered</h4>
+            <h4>Messages List</h4>
             <div>
               <PassMsg messages={messages} deleteMsg={(index)=>this.deleteMsg(index)}/>
             </div>
-            {/* <p id="output-text">{messages}</p> */}
           </div>
         </div>
       </div>
