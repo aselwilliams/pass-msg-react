@@ -8,17 +8,11 @@ class App extends Component {
     super();
     this.state = {
       inputValue: "",
-      output: "HELLO WORLD",
       alert: false,
       messages: [],
-      newMessage: ""
     };
   }
 
-  // handleChange = (e) => {
-  //   console.log(e.target.value);
-  //   this.setState({ inputValue: e.target.value });
-  // };
   handleSubmit = () => {
     const { inputValue, alert, messages } = this.state;
     if (this.state.inputValue === "") {
@@ -27,7 +21,6 @@ class App extends Component {
         this.setState({ alert: !alert });
       }, 3000);
     } else {
-      // let newList = [...messages, inputValue];
       this.setState({ messages: [...messages,inputValue] });
       this.setState({ inputValue: "" });
     }
@@ -37,6 +30,7 @@ class App extends Component {
     const { messages}= this.state;
     this.setState({messages: messages.filter((el, ind)=>ind !== index)})
   }
+
   render() {
     const { inputValue, output, alert,messages } = this.state;
     return (
@@ -57,7 +51,8 @@ class App extends Component {
             <p className={alert ? "show red-msg" : "no-show"}>
               Please Enter A Value To Pass
             </p>
-            <h4>Messages List</h4>
+            {messages.length!==0 && (<h4>Messages List</h4>)}
+            
             <div>
               <PassMsg messages={messages} deleteMsg={(index)=>this.handleDelete(index)}/>
             </div>

@@ -8,6 +8,7 @@ function Input({value,handleChange}) {
               type="text"
               id="input-text"
               onChange={(e)=>handleChange(e.target.value)}
+              placeholder='Enter message'
             />
     </div>
   )
